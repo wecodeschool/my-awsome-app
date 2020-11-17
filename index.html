@@ -1,32 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>GitHub repo example</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Mystery+Quest&family=Viaoda+Libre&display=swap"
+      rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="src/styles.css">
+    <title>Weather App</title>
+
   </head>
+
   <body>
-    <div class="container">
-      <h1>
-        Hosted with
-        <a href="https://www.netlify.com">Netlify</a>
-      </h1>
-      <a href="mailto:matt@delac.io" class="btn btn-primary contact-btn"
-        >Contact me</a
-      >
-      <img
-        src="https://paper-attachments.dropbox.com/s_E2839E24FC7F0728D4D3F0A165AC8F6358478DD8AAADC3C02AA1B3047CC41EA8_1560193451463_image.png"
-        alt=""
-      />
-    </div>
-    <script src="script.js"></script>
+
+    <div class="card-body">
+      <form id="search-weather" class="search-weather">
+        <input id="search-city-input" type="search" placeholder="Find City..." autofocus="on" autocomplete="off" />
+        <input type="submit" value="search" />
+        <button id="current-location" type="button" value="Current location"></button>
+      </form>
+
+      <div class="container">
+
+        <h3> Today in...</h3>
+        <span id="city"> </span>, <span id="country">
+
+        </span>
+
+        <div class="container my-6 ">
+          <div class="row">
+            <div class="col-sm-4">
+
+              <h5>2:57</h5>
+              <h6> Monday 10/12 </h6>
+
+
+
+            </div>
+            <div class="col-sm-4">
+
+
+              <p id="todays-description">
+                <img id="weather-icon" src="images/sun.png" width="50px" />
+              </p>
+              <p id="forecast-description">
+
+              </p>
+
+            </div>
+            <div class="col-sm-4">
+              <span id="degree-low" class="current-degree-low">| 53°F</span>
+              <span id="temp" class="current-degree-hi"> 88 </span>
+            </div>
+          </div>
+        </div>
+        <hr width="455">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <span class="tuesday">Tuesday</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="sun">
+                <img src="images/sun.png" width="30px" />
+              </span>
+            </div>
+            <div class="col-sm-4">
+              <span class="degree-low">| 63°F</span>
+              <span class="degree-hi"> 88°F </span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <span class="wednesday">Wednesday</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="sun"> <img src="images/sun.png" width="30px" /></span>
+            </div>
+            <div class="col-sm-4">
+              <span class="degree-low">| 63°F</span>
+              <span class="degree-hi"> 91°F </span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <span class="thursday">Thursday</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="sun"> <img src="images/sun.png" width="30px" /></span>
+            </div>
+            <div class="col-sm-4">
+              <span class="degree-low">| 62°F</span>
+              <span class="degree-hi"> 93°F </span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <span class="friday">Friday</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="sun"> <img src="images/sun.png" width="30px" /></span>
+            </div>
+            <div class="col-sm-4">
+              <span class="degree-low">| 57°F</span>
+              <span class="degree-hi"> 94°F </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <span class="saturday">Saturday</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="sun"> <img src="images/sun.png" width="30px" /></span>
+            </div>
+            <div class="col-sm-4">
+              <span class="degree-low">| 56°F</span>
+              <span class="degree-hi"> 91°F </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <span class="sunday">Sunday</span>
+            </div>
+            <div class="col-sm-4">
+              <span class="sun"> <img src="images/sun.png" width="30px" /></span>
+            </div>
+            <div class="col-sm-4">
+              <span class="degree-low">| 53°F</span>
+              <span class="degree-hi"> 87°F </span>
+            </div>
+          </div>
+          <div>
+            <hr width="455">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-4">
+                  Sunrise: <span id="sunrise"> </span>am<br>
+                  Precipitation: <span id="precipitation"> 0 </span> %
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+                <div class="col-sm-4">
+                  Sunset: <span id="sunset"> </span>pm<br>
+                  Wind: <span id="wind"> </span> mph
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <script src="src/index.js"></script>
   </body>
+
 </html>
